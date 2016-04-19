@@ -23,7 +23,11 @@
 
 <div class='leg_Col4of4-First'> <!-- Closes in footer - so leave this openended -->
 	<h2 id='map_title'>Minnesota ACS Demographics</h2>
-    <div class="loader"></div>
+	<div class='loadingDiv'>
+	    <div class="loaderHelper">Loading Minnesota ...</div>
+        <div class="loader"></div>
+    </div>
+
     <div id='main'>
     	<div class="graphics" id="age"> Age graphic</div>
     	<div class="graphics" id="income"> Income graphic</div>

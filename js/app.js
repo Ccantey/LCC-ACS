@@ -3,12 +3,17 @@
       height = 620;
 
 function init(error, counties,senate, house, congress){
-    var mainProjection = d3.geo.albers()
-    	.center([-3, 45.5]) //seem to move the x,y pixel location
-    	.rotate([94, 0, 0]) //centering it 94 degrees from center(0,46)
-    	.parallels([43.5, 49]) //standard parallels
-    	.scale(3800) //smaller = smaller
-    	.translate([width/2, height/2]); // x/y location of display 
+    createMaps(counties,senate, house, congress);    
+    // });
+}
+
+function createMaps(counties,senate, house, congress){
+  var mainProjection = d3.geo.albers()
+      .center([-3, 45.5]) //seem to move the x,y pixel location
+      .rotate([94, 0, 0]) //centering it 94 degrees from center(0,46)
+      .parallels([43.5, 49]) //standard parallels
+      .scale(3800) //smaller = smaller
+      .translate([width/2, height/2]); // x/y location of display 
 
     var mainpath = d3.geo.path()
         .projection(mainProjection);
@@ -28,7 +33,6 @@ function init(error, counties,senate, house, congress){
            .attr("fill","#666666");
 
         $('#main').show();
-        $('.loader').hide();
-    // });
+        $('.loadingDiv').hide();
 }
 
