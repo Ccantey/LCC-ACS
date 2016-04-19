@@ -5,6 +5,7 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="//d3js.org/topojson.v1.min.js"></script>
+	<script src="//d3js.org/queue.v1.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/helper.js"></script>
 	<!-- load the header -->
