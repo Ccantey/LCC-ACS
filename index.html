@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/* CSS goes here. */
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
+
+var width = 960,
+    height = 1160;
+
+var projection = d3.geo.albers()
+	.center([0, 46]) //seem to move the x,y pixel location
+	.rotate([94,0, 0]) //centering it 94 degrees from center(0,46)
+	.parallels([43.5, 49]) //standard parallels
+	.scale(3800) //smaller = smaller
+	.translate([width/2, height/2]); // x/y location of display 
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("php/getOverlayLayersAsGeoJSON.php", function(error, data) {
+    console.log(data)
+    //Bind data and create one path per GeoJSON feature
+    svg.selectAll("path")
+       .data(data.features)
+       .enter()
+       .append("path")
+       .attr("d", path)
+       .attr("fill","#666666");
+});
+
+
+
+</script>
