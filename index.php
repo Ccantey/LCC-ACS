@@ -29,12 +29,16 @@
     </div>
 
     <div id='main'>
-    	<div class="graphics" id="age"> Age graphic</div>
-    	<div class="graphics" id="income"> Income graphic</div>
-    	<div class="graphics" id="race"> Race graphic</div>
-    	<div class="graphics" id="education"> Education graphic</div>
+        <div class="panel">
+	    	<div class="graphics" id="age"> Age graphic</div>
+	    	<div class="graphics" id="income"> Income graphic</div>
+	    	<div class="graphics" id="race"> Race graphic</div>
+	    	<div class="graphics" id="education"> Education graphic</div>
+	    </div>
+    	<div id="main-map"></div>
+    	<div id="small-map"></div>
     </div>
 
 <?
     include(INCLUDEPATH."footer2012.inc");
-?>
+?> 
