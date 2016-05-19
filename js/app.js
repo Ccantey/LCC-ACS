@@ -34,7 +34,6 @@ function createMaps(counties, congress){
            .attr("d", smallpath)
            .attr("stroke","#ff6600");
 
-
   //Main Map creation
   var mainProjection = d3.geo.albers()
       .center([1, 46.5]) //seem to move the x,y pixel location
