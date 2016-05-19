@@ -1,17 +1,19 @@
 
-  var width = 400;
-  var height = 450;
-  var insetwidth = 250;
-  var insetheight = 250;
+
 
 //pass all defers into init
 function init(error, counties, congress, acs){
-    createMaps(counties, congress);    
+    createMaps(counties, congress);  
+    $('#main').show();
+	$('.loadingDiv').hide();  
     // });
 }
 
 function createMaps(counties, congress){
-
+  var width = 400;
+  var height = 450;
+  var insetwidth = 250;
+  var insetheight = 250;
     //small map creation
     var smallProjection = d3.geo.albers()
       .center([0, 46.5]) //seem to move the x,y pixel location
@@ -23,12 +25,21 @@ function createMaps(counties, congress){
     var smallpath = d3.geo.path()
         .projection(smallProjection);
 
-    var smallMN = d3.select("#small-map").append("svg")
+    var smallMNcanvassSVG = d3.select("#small-map").append("svg")
         .attr("width", insetwidth)
         .attr("height", insetheight);
+
+	smallMNcanvassSVG.append("rect")
+	    .attr("width",insetwidth)
+	    .attr("height",insetheight)
+	    .style("fill","#fff")
+	    .style("stroke","#333"); //don't really need this but I want to see the canvasses
     
-        //Bind data and create one path per GeoJSON feature
-        smallMN.selectAll("path")
+    congressionalLayer = smallMNcanvassSVG.append("g")
+        .attr("id","region-layer")
+        .attr("class","map-layer");    //Bind data and create one path per GeoJSON feature
+
+    congressionalLayer.selectAll("path")
            .data(congress.features)
            .enter()
            .append("path")
@@ -46,19 +57,33 @@ function createMaps(counties, congress){
     var mainpath = d3.geo.path()
         .projection(mainProjection);
 
-    var Minnesota = d3.select("#main-map").append("svg")
+    var MnCanvassSVG = d3.select("#main-map").append("svg")
         .attr("width", width)
         .attr("height", height);
-    
-        //Bind data and create one path per GeoJSON feature
-        Minnesota.selectAll("path")
-           .data(counties.features)
-           .enter()
-           .append("path")
-           .attr("d", mainpath)
-           .attr("stroke","#666666");
+   
 
-        $('#main').show();
-        $('.loadingDiv').hide();
+    MnCanvassSVG.append("rect")
+	    .attr("width",width)
+	    .attr("height",height)
+	    .style("fill","#fff")
+	    .style("stroke","#333");
+	    //.on("mouseover",mapMouseOut); //not there yet
+
+    countyLayer = MnCanvassSVG.append("g")
+      .attr("id","county-layer")
+      .attr("class","map-layer");
+
+    //Bind data and create one path per GeoJSON feature
+    countyLayer.selectAll("path")
+       .data(counties.features)
+       .enter()
+	       .append("path")
+	       .attr("id",function(d){return "e" + d.properties.countyid})
+	       .attr("d", mainpath)
+	       .attr("stroke","#666666"); //will be removed later
+	       // .on("mouseover",countyMouseOverHandler) //not there yet
+        //    .on("mousemove",showProbe)
+        //    .on("click",selectEntity);
+
 }
 
