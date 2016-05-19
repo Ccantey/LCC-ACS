@@ -4,7 +4,8 @@
   var insetwidth = 250;
   var insetheight = 250;
 
-function init(error, counties, congress){
+//pass all defers into init
+function init(error, counties, congress, acs){
     createMaps(counties, congress);    
     // });
 }
@@ -56,8 +57,6 @@ function createMaps(counties, congress){
            .append("path")
            .attr("d", mainpath)
            .attr("stroke","#666666");
-
-
 
         $('#main').show();
         $('.loadingDiv').hide();
