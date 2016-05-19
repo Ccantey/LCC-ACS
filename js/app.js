@@ -32,12 +32,12 @@ function createMaps(counties, congress){
            .enter()
            .append("path")
            .attr("d", smallpath)
-           .attr("fill","#ff6600");
+           .attr("stroke","#ff6600");
 
 
   //Main Map creation
   var mainProjection = d3.geo.albers()
-      .center([0, 46.5]) //seem to move the x,y pixel location
+      .center([1, 46.5]) //seem to move the x,y pixel location
       .rotate([94, 0, 0]) //centering it 94 degrees from center(0,46)
       .parallels([43.5, 49]) //standard parallels
       .scale(3800) //smaller = smaller
@@ -56,7 +56,7 @@ function createMaps(counties, congress){
            .enter()
            .append("path")
            .attr("d", mainpath)
-           .attr("fill","#666666");
+           .attr("stroke","#666666");
 
 
 
