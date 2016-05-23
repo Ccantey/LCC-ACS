@@ -18,6 +18,25 @@
   width:250px;
   float:right;
 }
+.leg_PageContent li{
+  padding-left: 0 !important;
+}
+.inline{
+  /*margin-bottom: 15px;*/
+  background-color: #e6e6e6;
+  padding-bottom: 75px !important;
+  padding-left:10px;
+  margin-left: 0 !important;
+/*
+  list-style: none;
+  overflow: hidden;*/
+}
+.inline li{
+  list-style:none;
+  float:left;
+  position:relative;
+  width:33%;
+}
 
 .loadingDiv{
   margin: 15% 0 0 45%;

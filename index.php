@@ -7,6 +7,7 @@
 	<script src="//d3js.org/topojson.v1.min.js"></script>
 	<script src="//d3js.org/queue.v1.min.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/data.js"></script>
 	<script src="js/helper.js"></script>
 	<!-- load the header -->
 	<?
@@ -28,16 +29,49 @@
         <div class="loader"></div>
     </div>
 
-    <div id='main'>
-        <div class="panel">
-	    	<div class="graphics" id="age"> Age graphic</div>
-	    	<div class="graphics" id="income"> Income graphic</div>
-	    	<div class="graphics" id="race"> Race graphic</div>
-	    	<div class="graphics" id="education"> Education graphic</div>
-	    </div>
-    	<div id="main-map"></div>
-    	<div id="small-map"></div>
+
+    <div id="selects">
+        
+        <ul class="inline">
+        <li>
+                <h2>Select a category:</h2>
+		        <select id="category-select">
+		        	<option>Demographic</option>
+		        	<option>Social</option>
+		        	<option>Economic</option>
+		        	<option>Housing</option>
+		        </select>
+		    </li>
+            <li>
+                <h2>Select a category:</h2>
+		        <select id="category-select">
+		        	<option>Demographic</option>
+		        	<option>Social</option>
+		        	<option>Economic</option>
+		        	<option>Housing</option>
+		        </select>
+		    </li>
+		    <li>
+		    	<h2>Search by:</h2>
+		    	<input type="text" id="search" value="District">
+
+		        </input>
+		    </li>
+<!-- 		    <li>
+		        <a target="_blank" id="csv-link"><div id="csv">Download CSV</div></a>
+		    </li> -->
+		</ul>
     </div>
+
+	<div class="panel">
+	<!-- 	    	<div class="graphics" id="age"> Age graphic</div>
+		<div class="graphics" id="income"> Income graphic</div>
+		<div class="graphics" id="race"> Race graphic</div>
+		<div class="graphics" id="education"> Education graphic</div> -->
+	</div>
+	<div id="main-map"></div>
+	<div id="small-map"></div>
+</div>
 
 <?
     include(INCLUDEPATH."footer2012.inc");

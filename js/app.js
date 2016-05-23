@@ -23,14 +23,6 @@ var percentileScale = d3.scale.quantile().range( d3.range(0,100) ); // to map da
 var selectedEntity;
 var hoverFeature;
 
-//pass all defers into init
-function init(error, counties, congress, acs){
-    createMaps(counties, congress);  
-    $('#main').show();
-	$('.loadingDiv').hide();  
-    // });
-}
-
 function createMaps(counties, congress){
   var width = 400;
   var height = 450;

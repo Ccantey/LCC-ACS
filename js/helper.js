@@ -12,6 +12,14 @@ $( document ).ready(function() {
 	    .await(init);
 
 	    //init will receive all the defers as parameters ie: init(error, counties, senate, house, so on so forth)
-
+		//pass all defers into init
+		function init(error, counties, congress, acs){
+		    createMaps(counties, congress);
+		    setupMeasures(acs);
+		    // setupDemographics(acs);
+		    $('#main').show();
+			$('.loadingDiv').hide();  
+		    // });
+		}
 
 });
