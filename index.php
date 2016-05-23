@@ -8,7 +8,7 @@
 	<script src="//d3js.org/queue.v1.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/data.js"></script>
-	<script src="js/helper.js"></script>
+	<script src="js/init.js"></script>
 	<!-- load the header -->
 	<?
 	    define('INCLUDEPATH',"views/");
@@ -36,10 +36,10 @@
         <li>
                 <h2>Select a category:</h2>
 		        <select id="category-select">
-		        	<option>Demographic</option>
-		        	<option>Social</option>
-		        	<option>Economic</option>
-		        	<option>Housing</option>
+		        	<option value="dp05">Demographic</option>
+		        	<option value="dp02">Social</option>
+		        	<option value="dp03">Economic</option>
+		        	<option value="dp04">Housing</option>
 		        </select>
 		    </li>
             <li>

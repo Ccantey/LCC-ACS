@@ -91,7 +91,7 @@ function createMaps(counties, congress){
        .data(counties.features)
        .enter()
 	       .append("path")
-	       .attr("id",function(d){return "e" + d.properties.countyid}) //prepend path id with e, presumably for a join with data
+	       .attr("id",function(d){return "e" + d.properties.district}) //prepend path id with e, presumably for a join with data
 	       .attr("d", mainpath)
 	       .attr("stroke","#666666") //will be removed later
 	       .on("mouseover",countyMouseOverHandler) //not there yet
