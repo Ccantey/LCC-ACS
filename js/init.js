@@ -3,9 +3,9 @@ $( document ).ready(function() {
     $('#main').hide();
     var selects = document.getElementById('category-select').value;
     queue()
-	    .defer(d3.json, 'php/getCountiesAsGeoJSON.php')	    
+	    .defer(d3.json, 'php/getSenateAsGeoJSON.php')	    
 	    // .defer(d3.json, 'php/getHouseAsGeoJSON.php')
-	    .defer(d3.json, 'php/getCongressAsGeoJSON.php')
+	    .defer(d3.json, 'php/getHouseAsGeoJSON.php')
 	    // .defer(d3.json, 'php/demographics.php')
 	    // .defer(d3.json, 'php/demographics.php')
 	    .defer(d3.json, 'php/getACSJSON.php?selects='+selects)

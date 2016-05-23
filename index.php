@@ -33,7 +33,16 @@
     <div id="selects">
         
         <ul class="inline">
-        <li>
+            <li>
+                <h2>Select a geography:</h2>
+		        <select id="geography-select">
+		        	<option value="dp05">House</option>
+		        	<option value="dp02">Senate</option>
+		        	<option value="dp03">Congress</option>
+		        	<option value="dp04">County</option>
+		        </select>
+		    </li>
+            <li>
                 <h2>Select a category:</h2>
 		        <select id="category-select">
 		        	<option value="dp05">Demographic</option>
@@ -43,7 +52,7 @@
 		        </select>
 		    </li>
             <li>
-                <h2>Select a category:</h2>
+                <h2>Select a metric:</h2>
 		        <select id="category-select">
 		        	<option>Demographic</option>
 		        	<option>Social</option>
@@ -52,14 +61,11 @@
 		        </select>
 		    </li>
 		    <li>
-		    	<h2>Search by:</h2>
-		    	<input type="text" id="search" value="District">
-
-		        </input>
+		        <h2>Search by:</h2>
+				    <input type="text" class="form-control" id="geoSearch" placeholder="district">				
+			
 		    </li>
-<!-- 		    <li>
-		        <a target="_blank" id="csv-link"><div id="csv">Download CSV</div></a>
-		    </li> -->
+
 		</ul>
     </div>
 
@@ -72,6 +78,8 @@
 	<div id="main-map"></div>
 	<div id="small-map"></div>
 </div>
+<!-- End page specific content (leg_Col4of4-First)-->
+
 
 <?
     include(INCLUDEPATH."footer2012.inc");
