@@ -36,10 +36,10 @@
             <li>
                 <h2>Select a geography:</h2>
 		        <select id="geography-select">
-		        	<option value="dp05">House</option>
-		        	<option value="dp02">Senate</option>
-		        	<option value="dp03">Congress</option>
-		        	<option value="dp04">County</option>
+		        	<option value="House">House</option>
+		        	<option value="Senate">Senate</option>
+		        	<option value="Congress">Congress</option>
+		        	<option value="County">County</option>
 		        </select>
 		    </li>
             <li>
@@ -53,7 +53,7 @@
 		    </li>
             <li>
                 <h2>Select a metric:</h2>
-		        <select id="category-select">
+		        <select id="metric-select">
 		        	<option>Demographic</option>
 		        	<option>Social</option>
 		        	<option>Economic</option>

@@ -2,13 +2,14 @@ $( document ).ready(function() {
 
     $('#main').hide();
     var selects = document.getElementById('category-select').value;
+    var geography = document.getElementById('geography-select').value;
     queue()
 	    .defer(d3.json, 'php/getSenateAsGeoJSON.php')	    
 	    // .defer(d3.json, 'php/getHouseAsGeoJSON.php')
 	    .defer(d3.json, 'php/getCongressAsGeoJSON.php')
 	    // .defer(d3.json, 'php/demographics.php')
 	    // .defer(d3.json, 'php/demographics.php')
-	    .defer(d3.json, 'php/getACSJSON.php?selects='+selects)
+	    .defer(d3.json, 'php/getACSJSON.php?selects='+selects+'&geography='+geography)
 
 	    .await(init);
 

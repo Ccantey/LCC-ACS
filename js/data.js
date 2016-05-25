@@ -14,7 +14,7 @@ function setupMeasures(data){
 	var subCategories
 	for ( var i in measureData ){
 		console.log(i)
-		if ( i == "countiesACS" ) continue;
+		if ( i == "ACS" ) continue;
 		var group = categories.append( "optgroup" )
 			.attr( "label", i )
 			.datum( measureData[i] );

@@ -27,7 +27,7 @@ var percentileScale = d3.scale.quantile().range( d3.range(0,100) ); // to map da
 var selectedEntity;
 var hoverFeature;
 
-function createMaps(senate, house){
+function createMaps(senate, congress){
 
     //small map creation
     smallProjection = d3.geo.albers()
@@ -56,7 +56,7 @@ function createMaps(senate, house){
         .attr("class","map-layer");    //Bind data and create one path per GeoJSON feature
 
     congressionalLayer.selectAll("path")
-           .data(house.features)
+           .data(congress.features)
            .enter()
 	           .append("path")
 	           .attr("d", smallpath)
