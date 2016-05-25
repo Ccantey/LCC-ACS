@@ -62,7 +62,7 @@
 		    </li>
 		    <li>
 		        <h2>Search by:</h2>
-				    <input type="text" class="form-control" id="geoSearch" placeholder="district">				
+				    <input type="text" class="form-control" id="geoSearch" placeholder="zipcode or county">				
 			
 		    </li>
 

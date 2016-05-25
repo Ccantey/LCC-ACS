@@ -14,8 +14,8 @@ $( document ).ready(function() {
 
 	    //init will receive all the defers as parameters ie: init(error, counties, senate, house, so on so forth)
 		//pass all defers into init
-		function init(error, counties, congress, acs){
-		    createMaps(counties, congress);
+		function init(error, senate, house, acs){
+		    createMaps(senate, house);
 		    setupMeasures(acs);
 		    // setupDemographics(acs);
 		    $('#main').show();

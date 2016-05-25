@@ -21,6 +21,9 @@
 .leg_PageContent li{
   padding-left: 0 !important;
 }
+.active {
+  fill: orange;
+}
 .inline{
   /*margin-bottom: 15px;*/
   background-color: #e6e6e6;

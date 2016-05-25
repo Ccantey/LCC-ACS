@@ -4,14 +4,18 @@ var mainProjection,
     smallpath;
 
 var MnCongressContainer,
-    MnCountiesContainer,
+    MnSenateContainer,
     congressionalLayer,
     countyLayer;
     // insetCountyLayer,
     // zipcodeLayer,
     // censusLayer,
     // citiesLayer;
-
+var width = 400;
+var height = 450;
+var insetwidth = 250;
+var insetheight = 250;
+var active = d3.select(null);
 var mapScale = 1;
 
 var zoomedFeature,
@@ -23,11 +27,8 @@ var percentileScale = d3.scale.quantile().range( d3.range(0,100) ); // to map da
 var selectedEntity;
 var hoverFeature;
 
-function createMaps(counties, congress){
-  var width = 400;
-  var height = 450;
-  var insetwidth = 250;
-  var insetheight = 250;
+function createMaps(senate, house){
+
     //small map creation
     smallProjection = d3.geo.albers()
       .center([0, 46.5]) //seem to move the x,y pixel location
@@ -54,7 +55,7 @@ function createMaps(counties, congress){
         .attr("class","map-layer");    //Bind data and create one path per GeoJSON feature
 
     congressionalLayer.selectAll("path")
-           .data(congress.features)
+           .data(house.features)
            .enter()
 	           .append("path")
 	           .attr("d", smallpath)
@@ -71,24 +72,24 @@ function createMaps(counties, congress){
     mainpath = d3.geo.path()
         .projection(mainProjection);
 
-    MnCountiesContainer = d3.select("#main-map").append("svg")
+    MnSenateContainer = d3.select("#main-map").append("svg")
         .attr("width", width)
         .attr("height", height);   
 
-    MnCountiesContainer.append("rect")
+    MnSenateContainer.append("rect")
 	    .attr("width",width)
 	    .attr("height",height)
 	    .style("fill","#fff")
 	    .style("stroke","#333")
 	    .on("mouseover",mapMouseOut); //not there yet
 
-    countyLayer = MnCountiesContainer.append("g")
+    countyLayer = MnSenateContainer.append("g")
       .attr("id","county-layer")
       .attr("class","map-layer");
 
     //Bind data and create one path per GeoJSON feature
     countyLayer.selectAll("path")
-       .data(counties.features)
+       .data(senate.features)
        .enter()
 	       .append("path")
 	       .attr("id",function(d){return "e" + d.properties.district}) //prepend path id with e, presumably for a join with data
@@ -96,8 +97,37 @@ function createMaps(counties, congress){
 	       .attr("stroke","#666666") //will be removed later
 	       .on("mouseover",countyMouseOverHandler) //not there yet
            // .on("mousemove",showProbe)
-        //    .on("click",selectEntity);
+           .on("click",selectEntity);
 
+}
+
+function selectEntity(d) {
+  if (active.node() === this) return reset();
+  active.classed("active", false);
+  active = d3.select(this).classed("active", true);
+
+  var bounds = mainpath.bounds(d),
+      dx = bounds[1][0] - bounds[0][0],
+      dy = bounds[1][1] - bounds[0][1],
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      mapScale = .25 / Math.max(dx / width, dy / height),
+      translate = [width / 2 - mapScale * x, height / 2 - mapScale * y];
+
+  countyLayer.transition()
+      .duration(750)
+      .style("stroke-width", 1 / mapScale + "px")
+      .attr("transform", "translate(" + translate + ")scale(" + mapScale + ")");
+}
+
+function reset() {
+  active.classed("active", false);
+  active = d3.select(null);
+
+  countyLayer.transition()
+      .duration(750)
+      .style("stroke-width", "1px")
+      .attr("transform", "");
 }
 
 function countyMouseOverHandler(d){
