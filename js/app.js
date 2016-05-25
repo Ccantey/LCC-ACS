@@ -48,7 +48,8 @@ function createMaps(senate, house){
 	    .attr("width",insetwidth)
 	    .attr("height",insetheight)
 	    .style("fill","#fff")
-	    .style("stroke","#333"); //don't really need this but I want to see the canvasses
+	    .style("stroke","#333")
+	    .on("mouseover",mapMouseOut); 
     
     congressionalLayer = MnCongressContainer.append("g")
         .attr("id","region-layer")
@@ -59,7 +60,8 @@ function createMaps(senate, house){
            .enter()
 	           .append("path")
 	           .attr("d", smallpath)
-	           .attr("stroke","#ff6600");
+	           .attr("stroke","#ff6600")
+	           .on("click",selectEntity);
 
   //Main Map creation
     mainProjection = d3.geo.albers()
@@ -111,7 +113,7 @@ function selectEntity(d) {
       dy = bounds[1][1] - bounds[0][1],
       x = (bounds[0][0] + bounds[1][0]) / 2,
       y = (bounds[0][1] + bounds[1][1]) / 2,
-      mapScale = .25 / Math.max(dx / width, dy / height),
+      mapScale = .75 / Math.max(dx / width, dy / height),
       translate = [width / 2 - mapScale * x, height / 2 - mapScale * y];
 
   countyLayer.transition()
