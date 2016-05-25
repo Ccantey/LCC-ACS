@@ -74,6 +74,12 @@ function createMaps(senate, congress){
     mainpath = d3.geo.path()
         .projection(mainProjection);
 
+    // var zoom = d3.behavior.zoom()
+    // .translate(mainProjection.translate())
+    // .scale(mainProjection.scale())
+    // .scaleExtent([15000, 3800])
+    // .on("zoom", zoomed);
+
     MnSenateContainer = d3.select("#main-map").append("svg")
         .attr("width", width)
         .attr("height", height);   
@@ -85,9 +91,11 @@ function createMaps(senate, congress){
 	    .style("stroke","#333")
 	    .on("mouseover",mapMouseOut); //not there yet
 
+
     countyLayer = MnSenateContainer.append("g")
       .attr("id","county-layer")
       .attr("class","map-layer");
+      // .call(zoom);
 
     //Bind data and create one path per GeoJSON feature
     countyLayer.selectAll("path")
@@ -100,8 +108,12 @@ function createMaps(senate, congress){
 	       .on("mouseover",countyMouseOverHandler) //not there yet
            // .on("mousemove",showProbe)
            .on("click",selectEntity);
-
 }
+
+// function zoomed() {
+//   mainProjection.translate(d3.event.translate).scale(d3.event.scale);
+//   countyLayer.selectAll("path").attr("d", mainpath);
+// }
 
 function selectEntity(d) {
   if (active.node() === this) return reset();
