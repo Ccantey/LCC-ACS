@@ -10,12 +10,12 @@
 }
 
 #main-map{
-  width:400px;
+  /*width:400px;*/
   /*background:#333;*/
   float:right;
 }
 #small-map{
-  width:250px;
+  /*width:250px;*/
   float:right;
 }
 .leg_PageContent li{

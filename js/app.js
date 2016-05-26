@@ -13,8 +13,8 @@ var MnCongressContainer,
     // citiesLayer;
 var width = 400;
 var height = 450;
-var insetwidth = 250;
-var insetheight = 250;
+var insetwidth = 300;
+var insetheight = 300;
 var active = d3.select(null);
 var mapScale = 1;
 
@@ -34,7 +34,7 @@ function createMaps(senate, congress){
       .center([0, 46.5]) //seem to move the x,y pixel location
       .rotate([94, 0, 0]) //centering it 94 degrees from center(0,46)
       .parallels([43.5, 49]) //standard parallels
-      .scale(1200 * 1.8) //smaller = smaller
+      .scale(1450 * 1.8) //smaller = smaller
       .translate([insetwidth/2, insetheight/2]); // x/y location of display 
 
     smallpath = d3.geo.path()
@@ -74,11 +74,11 @@ function createMaps(senate, congress){
     mainpath = d3.geo.path()
         .projection(mainProjection);
 
-    // var zoom = d3.behavior.zoom()
-    // .translate(mainProjection.translate())
-    // .scale(mainProjection.scale())
-    // .scaleExtent([15000, 3800])
-    // .on("zoom", zoomed);
+    var zoom = d3.behavior.zoom()
+    .translate(mainProjection.translate())
+    .scale(mainProjection.scale())
+    .scaleExtent([3800,15000])
+    .on("zoom", zoomed);
 
     MnSenateContainer = d3.select("#main-map").append("svg")
         .attr("width", width)
@@ -89,13 +89,15 @@ function createMaps(senate, congress){
 	    .attr("height",height)
 	    .style("fill","#fff")
 	    .style("stroke","#333")
-	    .on("mouseover",mapMouseOut); //not there yet
+	    .on("mouseover",mapMouseOut)
+	    .call(zoom); 
 
 
     countyLayer = MnSenateContainer.append("g")
       .attr("id","county-layer")
-      .attr("class","map-layer");
-      // .call(zoom);
+      .attr("class","map-layer")
+      .call(zoom);
+      
 
     //Bind data and create one path per GeoJSON feature
     countyLayer.selectAll("path")
@@ -107,13 +109,13 @@ function createMaps(senate, congress){
 	       .attr("stroke","#666666") //will be removed later
 	       .on("mouseover",countyMouseOverHandler) //not there yet
            // .on("mousemove",showProbe)
-           .on("click",selectEntity);
+           // .on("click",selectEntity);
 }
 
-// function zoomed() {
-//   mainProjection.translate(d3.event.translate).scale(d3.event.scale);
-//   countyLayer.selectAll("path").attr("d", mainpath);
-// }
+function zoomed() {
+  mainProjection.translate(d3.event.translate).scale(d3.event.scale);
+  countyLayer.selectAll("path").attr("d", mainpath);
+}
 
 function selectEntity(d) {
   if (active.node() === this) return reset();
