@@ -90,7 +90,7 @@ function createMaps(senate, congress){
 	    .style("fill","#fff")
 	    .style("stroke","#333")
 	    .on("mouseover",mapMouseOut)
-	    .call(zoom); 
+	    .call(zoom); //enable pan on canvas
 
 
     countyLayer = MnSenateContainer.append("g")

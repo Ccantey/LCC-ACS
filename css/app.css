@@ -4,9 +4,27 @@
 }
 
 .panel{
-  background:#e6e6e6;
+  /*background:#e6e6e6;*/
   width:250px;
   float:left;
+}
+.graphicsHeader{
+  font-size: 15px;
+  text-align: center;
+  margin:5px;
+  font-weight:bold;
+}
+.graphicsSubHeader{
+  font-size: 12px;
+  text-align: center;
+  margin:5px;
+}
+.graphicsDataPoint{
+  font-size: 30px;
+  color:#990033;
+  text-align: center;
+  font-weight: bold;
+  margin:5px;
 }
 
 #main-map{
@@ -30,6 +48,7 @@
   padding-bottom: 75px !important;
   padding-left:10px;
   margin-left: 0 !important;
+  text-align: center;
 /*
   list-style: none;
   overflow: hidden;*/

@@ -34,7 +34,7 @@
         
         <ul class="inline">
             <li>
-                <h2>Select a geography:</h2>
+                <div class="graphicsHeader">Select a geography:</div>
 		        <select id="geography-select">
 		        	<option value="House">House</option>
 		        	<option value="Senate">Senate</option>
@@ -43,7 +43,7 @@
 		        </select>
 		    </li>
             <li>
-                <h2>Select a category:</h2>
+                <div class="graphicsHeader">Select a category:</div>
 		        <select id="category-select">
 		        	<option value="dp05">Demographic</option>
 		        	<option value="dp02">Social</option>
@@ -52,7 +52,7 @@
 		        </select>
 		    </li>
             <li>
-                <h2>Select a metric:</h2>
+                <div class="graphicsHeader">Select a metric:</div>
 		        <select id="metric-select">
 		        	<option>Demographic</option>
 		        	<option>Social</option>
@@ -61,7 +61,7 @@
 		        </select>
 		    </li>
 		    <li>
-		        <h2>Search by:</h2>
+		        <div class="graphicsHeader">Search by:</div>
 				    <input type="text" class="form-control" id="geoSearch" placeholder="zipcode or county">				
 			
 		    </li>
@@ -70,9 +70,12 @@
     </div>
 
 	<div class="panel">
-	<!-- 	    	<div class="graphics" id="age"> Age graphic</div>
-		<div class="graphics" id="income"> Income graphic</div>
-		<div class="graphics" id="race"> Race graphic</div>
+		<div class="graphicsHeader"> Household by type</div>
+		<div class="graphicsSubHeader"> Average Household Size</div>
+		<div class="graphicsDataPoint"> 2.5</div>
+		<div class="graphicsSubHeader"> Average Family Size</div>
+		<div class="graphicsDataPoint"> 3.0</div>
+<!-- 		<div class="graphics" id="race"> Race graphic</div>
 		<div class="graphics" id="education"> Education graphic</div> -->
 	</div>
 	<div id="main-map"></div>

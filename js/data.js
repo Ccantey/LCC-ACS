@@ -8,12 +8,27 @@ var measureData,
 	stateGroups = {};
 
 function setupMeasures(data){
-	measureData = data;
+	console.log(data.ACS);
+	measureData = {};
+
+	for (i in data.ACS){
+		console.log(data.ACS[i].geographicProfile);
+		//measureData.push
+		// for (var attribute in data.ACS[i].geographicProfile) {
+		//   if (data.ACS[i].geographicProfile.hasOwnProperty(attribute)) {
+		//     console.log(attribute + " -> " + data.ACS[i].geographicProfile[attribute]);
+		//   }
+		// }
+	}
+
+
+
+
 	// categories = d3.select( "#selects" ).append( "select" ).attr( "id", "category-select" );
 
 	var subCategories
 	for ( var i in measureData ){
-		console.log(i)
+
 		if ( i == "ACS" ) continue;
 		var group = categories.append( "optgroup" )
 			.attr( "label", i )
@@ -91,6 +106,7 @@ function selectMeasure( m ){
 
 var hasMetroData = false,
 	hasSig = false;
+	
 function getMeasureValues(id){
 	d3.json( "php/get_values.php?id=" + id, function(error,data){
 		countyValues = d3.map();
