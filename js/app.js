@@ -5,7 +5,7 @@ var mainProjection,
 
 var InsetMapSVG,
     MainMapSVG,
-    congressionalLayer,
+    insetCongressionalLayer,
     countyLayer;
     // insetCountyLayer,
     // zipcodeLayer,
@@ -51,11 +51,11 @@ function createMaps(senate, congress){
 	    .style("stroke","#333")
 	    .on("mouseover",mapMouseOut); 
     
-    congressionalLayer = InsetMapSVG.append("g")
+    insetCongressionalLayer = InsetMapSVG.append("g")
         .attr("id","region-layer")
         .attr("class","map-layer");    //Bind data and create one path per GeoJSON feature
 
-    congressionalLayer.selectAll("path")
+    insetCongressionalLayer.selectAll("path")
            .data(congress.features)
            .enter()
 	           .append("path")

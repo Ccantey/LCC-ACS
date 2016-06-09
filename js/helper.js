@@ -5,21 +5,33 @@ $( document ).ready(function() {
 
 		switch($('#geography-select').val()) {
 		    case 'Senate':
-		        // $('#small-map').hide()
+		        senateLayer.style("display","block");
+		        houseLayer.style("display","none");
 		        insetCountyLayer.style("display","none");
+		        countyLayer.style("display","none");
+		        congressionalLayer.style("display","none");
 		        //WILL USE!! senateLayer.style("display","block"); to toggle
 		        break;
 		    case 'House':
-		        // $('#small-map').hide();
+		        houseLayer.style("display","block");
+		        senateLayer.style("display","none");
 		        insetCountyLayer.style("display","none");
+		        congressionalLayer.style("display","none");
+		        countyLayer.style("display","none");
 		        break;
 		    case 'Congress':
-		        // $('#small-map').show();
+		        congressionalLayer.style("display","block");
+		        houseLayer.style("display","none");
+		        senateLayer.style("display","none");
 		        insetCountyLayer.style("display","block");
+		        countyLayer.style("display","none");
 		        break;
 		    case 'County':
-		        // $('#small-map').hide();
+		        houseLayer.style("display","none");
+		        senateLayer.style("display","none");
 		        insetCountyLayer.style("display","none");
+		        congressionalLayer.style("display","none");
+		        countyLayer.style("display","block");
 		        break;
 		    default:
 		        // $('#small-map').hide();
