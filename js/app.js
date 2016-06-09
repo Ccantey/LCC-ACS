@@ -3,8 +3,8 @@ var mainProjection,
     mainpath,
     smallpath;
 
-var MnCongressContainer,
-    MnSenateContainer,
+var InsetMapSVG,
+    MainMapSVG,
     congressionalLayer,
     countyLayer;
     // insetCountyLayer,
@@ -40,18 +40,18 @@ function createMaps(senate, congress){
     smallpath = d3.geo.path()
         .projection(smallProjection);
 
-    MnCongressContainer = d3.select("#small-map").append("svg")
+    InsetMapSVG = d3.select("#small-map").append("svg")
         .attr("width", insetwidth)
         .attr("height", insetheight);
 
-	MnCongressContainer.append("rect")
+	InsetMapSVG.append("rect")
 	    .attr("width",insetwidth)
 	    .attr("height",insetheight)
 	    .style("fill","#fff")
 	    .style("stroke","#333")
 	    .on("mouseover",mapMouseOut); 
     
-    congressionalLayer = MnCongressContainer.append("g")
+    congressionalLayer = InsetMapSVG.append("g")
         .attr("id","region-layer")
         .attr("class","map-layer");    //Bind data and create one path per GeoJSON feature
 
@@ -80,11 +80,11 @@ function createMaps(senate, congress){
     .scaleExtent([3800,15000])
     .on("zoom", zoomed);
 
-    MnSenateContainer = d3.select("#main-map").append("svg")
+    MainMapSVG = d3.select("#main-map").append("svg")
         .attr("width", width)
         .attr("height", height);   
 
-    MnSenateContainer.append("rect")
+    MainMapSVG.append("rect")
 	    .attr("width",width)
 	    .attr("height",height)
 	    .style("fill","#fff")
@@ -93,7 +93,7 @@ function createMaps(senate, congress){
 	    .call(zoom); //enable pan on canvas
 
 
-    countyLayer = MnSenateContainer.append("g")
+    countyLayer = MainMapSVG.append("g")
       .attr("id","county-layer")
       .attr("class","map-layer")
       .call(zoom);

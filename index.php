@@ -7,7 +7,7 @@
 	<script src="//d3js.org/topojson.v1.min.js"></script>
 	<script src="//d3js.org/queue.v1.min.js"></script>
 	<script src="js/helper.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/map.js"></script>
 	<script src="js/data.js"></script>
 	<script src="js/init.js"></script>
 
