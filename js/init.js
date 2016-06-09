@@ -3,8 +3,9 @@ $( document ).ready(function() {
     $('#main').hide();
     var selects = document.getElementById('category-select').value;
     var geography = document.getElementById('geography-select').value;
+
     queue()
-	    .defer(d3.json, 'php/getSenateAsGeoJSON.php')	    
+	    .defer(d3.json, 'php/getMainMapAsGeoJSON.php?geography='+geography)	    
 	    // .defer(d3.json, 'php/getHouseAsGeoJSON.php')
 	    .defer(d3.json, 'php/getCongressAsGeoJSON.php')
 	    // .defer(d3.json, 'php/demographics.php')
@@ -18,6 +19,8 @@ $( document ).ready(function() {
 		function init(error, senate, congress, acs){
 		    createMaps(senate, congress);
 		    setupMeasures(acs);
+		    
+		    // helper.geography()
 		    // setupDemographics(acs);
 		    $('#main').show();
 			$('.loadingDiv').hide();  

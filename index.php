@@ -6,9 +6,11 @@
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="//d3js.org/topojson.v1.min.js"></script>
 	<script src="//d3js.org/queue.v1.min.js"></script>
+	<script src="js/helper.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/data.js"></script>
 	<script src="js/init.js"></script>
+
 	<!-- load the header -->
 	<?
 	    define('INCLUDEPATH',"views/");
@@ -54,10 +56,10 @@
             <li>
                 <div class="graphicsHeader">Select a metric:</div>
 		        <select id="metric-select">
-		        	<option>Demographic</option>
+		  <!--       	<option>Demographic</option>
 		        	<option>Social</option>
 		        	<option>Economic</option>
-		        	<option>Housing</option>
+		        	<option>Housing</option> -->
 		        </select>
 		    </li>
 		    <li>

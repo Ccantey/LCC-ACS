@@ -8,11 +8,13 @@ var measureData,
 	stateGroups = {};
 
 function setupMeasures(data){
-	console.log(data.ACS);
+	// console.log(data.ACS);
 	measureData = {};
+	// metric-select
+    categories = d3.select( "#metric-select" );
 
 	for (i in data.ACS){
-		console.log(data.ACS[i].geographicProfile);
+		// console.log(data.ACS[i].geographicProfile);
 		//measureData.push
 		// for (var attribute in data.ACS[i].geographicProfile) {
 		//   if (data.ACS[i].geographicProfile.hasOwnProperty(attribute)) {
