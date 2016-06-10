@@ -192,8 +192,10 @@ function createMaps(senate, house, congress, counties){
 // }
 
 function selectEntity(d) {
-  console.log(d);
-  if (active.node() === this) return reset();
+  var geoSelect = $('#geography-select').val();
+  var geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
+
+  if (active.node() === this) return reset(geoMap[geoSelect]);
   active.classed("active", false);
   active = d3.select(this).classed("active", true);
 
@@ -205,9 +207,7 @@ function selectEntity(d) {
       mapScale = .75 / Math.max(dx / width, dy / height),
       translate = [width / 2 - mapScale * x, height / 2 - mapScale * y];
 
-  var geoSelect = $('#geography-select').val();
 
-  var geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer}
 
   geoMap[geoSelect].transition()
       .duration(750)
@@ -215,26 +215,11 @@ function selectEntity(d) {
       .attr("transform", "translate(" + translate + ")scale(" + mapScale + ")");
 }
 
-function reset() {
+function reset(layer) {
   active.classed("active", false);
   active = d3.select(null);
 
-  houseLayer.transition()
-      .duration(750)
-      .style("stroke-width", "1px")
-      .attr("transform", "");
-
-  senateLayer.transition()
-      .duration(750)
-      .style("stroke-width", "1px")
-      .attr("transform", "");
-
-  congressionalLayer.transition()
-      .duration(750)
-      .style("stroke-width", "1px")
-      .attr("transform", "");
-
-  countyLayer.transition()
+  layer.transition()
       .duration(750)
       .style("stroke-width", "1px")
       .attr("transform", "");
