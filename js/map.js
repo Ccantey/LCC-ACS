@@ -86,11 +86,11 @@ function createMaps(senate, house, congress, counties){
     mainpath = d3.geo.path()
         .projection(mainProjection);
 
-    var zoom = d3.behavior.zoom()
-    .translate(mainProjection.translate())
-    .scale(mainProjection.scale())
-    .scaleExtent([3800,15000])
-    .on("zoom", zoomed);
+    // var zoom = d3.behavior.zoom()
+    // .translate(mainProjection.translate())
+    // .scale(mainProjection.scale())
+    // .scaleExtent([3800,15000])
+    // .on("zoom", zoomed);
 
     MainMapSVG = d3.select("#main-map").append("svg")
         .attr("width", width)
@@ -102,13 +102,13 @@ function createMaps(senate, house, congress, counties){
 	    .style("fill","#fff")
 	    .style("stroke","#333")
 	    .on("mouseover",mapMouseOut)
-	    .call(zoom); //enable pan on canvas
+	    // .call(zoom); //enable pan on canvas
 
 
     houseLayer = MainMapSVG.append("g")
       .attr("id","house-layer")
       .attr("class","map-layer")
-      .call(zoom);
+      // .call(zoom);
       
 
     //Bind data and create one path per GeoJSON feature
@@ -126,7 +126,7 @@ function createMaps(senate, house, congress, counties){
     senateLayer = MainMapSVG.append("g")
       .attr("id","senate-layer")
       .attr("class","map-layer")
-      .call(zoom);
+      // .call(zoom);
       
 
     //Bind data and create one path per GeoJSON feature
@@ -144,7 +144,7 @@ function createMaps(senate, house, congress, counties){
     congressionalLayer = MainMapSVG.append("g")
       .attr("id","congress-layer")
       .attr("class","map-layer")
-      .call(zoom);
+      // .call(zoom);
       
 
     //Bind data and create one path per GeoJSON feature
@@ -162,7 +162,7 @@ function createMaps(senate, house, congress, counties){
     countyLayer = MainMapSVG.append("g")
       .attr("id","county-layer")
       .attr("class","map-layer")
-      .call(zoom);
+      // .call(zoom);
       
 
     //Bind data and create one path per GeoJSON feature
@@ -176,6 +176,14 @@ function createMaps(senate, house, congress, counties){
          .on("mouseover",mapMouseOverHandler) //not there yet
            // .on("mousemove",showProbe)
            // .on("click",selectEntity);
+
+    //initial state of maps
+    $('#geography-select').val('Senate');
+    senateLayer.style("display","block");
+    houseLayer.style("display","none");
+    insetCountyLayer.style("display","none");
+    countyLayer.style("display","none");
+    congressionalLayer.style("display","none");
 }
 
 function zoomed() {
