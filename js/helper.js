@@ -1,8 +1,6 @@
 $( document ).ready(function() {
-	// $('#small-map').hide()
-	console.log('insidechange')
     $('#geography-select').change(function(){
-
+        active.classed("active", false);
 		switch($('#geography-select').val()) {
 		    case 'Senate':
 		        senateLayer.style("display","block");
@@ -10,7 +8,6 @@ $( document ).ready(function() {
 		        insetCountyLayer.style("display","none");
 		        countyLayer.style("display","none");
 		        congressionalLayer.style("display","none");
-		        //WILL USE!! senateLayer.style("display","block"); to toggle
 		        break;
 		    case 'House':
 		        houseLayer.style("display","block");
@@ -34,7 +31,6 @@ $( document ).ready(function() {
 		        countyLayer.style("display","block");
 		        break;
 		    default:
-		        // $('#small-map').hide();
 		        insetCountyLayer.style("display","none");
 		}
     })
