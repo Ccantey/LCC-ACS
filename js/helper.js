@@ -1,6 +1,14 @@
 $( document ).ready(function() {
-    $('#geography-select').change(function(){
+
+	//get previous state of select box
+	$('#geography-select').focus(function(){
+        prevGeogState = this.value;
+        console.log(prevGeogState)
+    //the execute changes
+	}).change(function(){
         active.classed("active", false);
+        reset(geoMap[prevGeogState]);
+        prevGeogState = this.value;
 		switch($('#geography-select').val()) {
 		    case 'Senate':
 		        senateLayer.style("display","block");

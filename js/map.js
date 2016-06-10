@@ -6,11 +6,17 @@ var mainProjection,
 var InsetMapSVG,
     MainMapSVG,
     insetCongressionalLayer,
-    countyLayer;
-    // insetCountyLayer,
+    countyLayer,
+    houseLayer,
+    senateLayer,
+    congressionalLayer;
     // zipcodeLayer,
     // censusLayer,
     // citiesLayer;
+var prevGeogState;
+var geoMap = {};
+
+
 var width = 400;
 var height = 450;
 var insetwidth = 300;
@@ -177,6 +183,7 @@ function createMaps(senate, house, congress, counties){
            // .on("mousemove",showProbe)
            // .on("click",selectEntity);
 
+    geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
     //initial state of maps
     $('#geography-select').val('Senate');
     senateLayer.style("display","block");
@@ -193,7 +200,7 @@ function createMaps(senate, house, congress, counties){
 
 function selectEntity(d) {
   var geoSelect = $('#geography-select').val();
-  var geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
+  // var geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
 
   if (active.node() === this) return reset(geoMap[geoSelect]);
   active.classed("active", false);
@@ -206,8 +213,6 @@ function selectEntity(d) {
       y = (bounds[0][1] + bounds[1][1]) / 2,
       mapScale = .75 / Math.max(dx / width, dy / height),
       translate = [width / 2 - mapScale * x, height / 2 - mapScale * y];
-
-
 
   geoMap[geoSelect].transition()
       .duration(750)
