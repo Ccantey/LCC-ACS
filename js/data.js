@@ -7,21 +7,23 @@ var measureData,
 	hasZipData,
 	stateGroups = {};
 
-function setupMeasures(data){
+function setupMeasures(data, metadata){
 	// console.log(data.ACS);
 	measureData = {};
 	// metric-select
     categories = d3.select( "#metric-select" );
 
-	for (i in data.ACS){
-		// console.log(data.ACS[i].geographicProfile);
-		//measureData.push
-		// for (var attribute in data.ACS[i].geographicProfile) {
-		//   if (data.ACS[i].geographicProfile.hasOwnProperty(attribute)) {
-		//     console.log(attribute + " -> " + data.ACS[i].geographicProfile[attribute]);
-		//   }
-		// }
-	}
+    // for (i in data.ACSdata){
+    // 	console.log(data.ACSdata[i].geographicProfile)
+    // }
+    //HEY DIPSHIT - YOU JUST NEED TO COMPARE KEYS TO KEYS
+for (i in data.ACSdata){
+    for (k in metadata.ACSmetadata){
+    	if (data.ACSdata[i].geographicProfile == metadata.ACSmetadata[k][data.ACSdata[i])
+    	console.log(metadata.ACSmetadata[k][data.ACSdata[i].geographicProfile], metadata.ACSmetadata[k].description)
+    }
+}
+
 
 
 
@@ -79,6 +81,34 @@ function setupMeasures(data){
 	// //selectMeasure( measures.select("option:nth-child(2)").datum() );	// second option; first is the "select a measure" prompt
 }
 
+function equivilant(a,b){
+	for (i in a){
+		var aProps = Object.getOwnPropertyNames(a);
+		console.log(aProps)
+	}
+	
+    var bProps = Object.getOwnPropertyNames(b);
+    
+    // If number of properties is different,
+    // objects are not equivalent
+    // if (aProps.length != bProps.length) {
+    //     return false;
+    // }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+        console.log(propName)
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+
+    // If we made it this far, objects
+    // are considered equivalent
+    return true;
+}
 function selectCategory( c ){
 	measures.selectAll( "option" ).remove();
 

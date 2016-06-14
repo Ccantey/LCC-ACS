@@ -3,8 +3,7 @@ $( document ).ready(function() {
 	//get previous state of select box
 	$('#geography-select').focus(function(){
         prevGeogState = this.value;
-        console.log(prevGeogState)
-    //the execute changes
+    //then execute changes
 	}).change(function(){
         active.classed("active", false);
         reset(geoMap[prevGeogState]);
@@ -41,7 +40,28 @@ $( document ).ready(function() {
 		    default:
 		        insetCountyLayer.style("display","none");
 		}
-    })
+    });
 
+
+   $('#category-select').focus(function(){
+        prevCatState = this.value;
+    //then execute changes
+	}).change(function(){
+		switch($('#category-select').val()) {
+		    case 'dp05':
+		        console.log('demographic')
+		        break;
+	        case 'dp02':
+		        console.log('social')
+		        break;
+	        case 'dp03':
+		        console.log('economic')
+		        break;
+	        case 'dp04':
+		        console.log('housing')
+		        break;
+
+	    }
+    });
 
 });

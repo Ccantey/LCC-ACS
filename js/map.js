@@ -14,6 +14,7 @@ var InsetMapSVG,
     // censusLayer,
     // citiesLayer;
 var prevGeogState;
+var prevCatState;
 var geoMap = {};
 
 
