@@ -186,7 +186,7 @@ function createMaps(senate, house, congress, counties){
 
     geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
     //initial state of maps
-    // $('#geography-select').val('Senate');
+    $('#geography-select').val('Senate');
     senateLayer.style("display","block");
     houseLayer.style("display","none");
     insetCountyLayer.style("display","none");
