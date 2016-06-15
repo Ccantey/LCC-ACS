@@ -7,22 +7,17 @@ var measureData,
 	hasZipData,
 	stateGroups = {};
 
-function setupMeasures(data, metadata){
+function setupMeasures(data){
 	// console.log(data.ACS);
 	measureData = {};
 	// metric-select
     categories = d3.select( "#metric-select" );
 
     // for (i in data.ACSdata){
-    // 	console.log(data.ACSdata[i].geographicProfile)
+    // 	console.log(data.ACSdata[i])
     // }
-    //HEY DIPSHIT - YOU JUST NEED TO COMPARE KEYS TO KEYS
-for (i in data.ACSdata){
-    for (k in metadata.ACSmetadata){
-    	if (data.ACSdata[i].geographicProfile == metadata.ACSmetadata[k][data.ACSdata[i])
-    	console.log(metadata.ACSmetadata[k][data.ACSdata[i].geographicProfile], metadata.ACSmetadata[k].description)
-    }
-}
+
+    
 
 
 

@@ -12,15 +12,14 @@ $( document ).ready(function() {
 	    // .defer(d3.json, 'php/demographics.php')
 	    // .defer(d3.json, 'php/demographics.php')
 	    .defer(d3.json, 'php/getACSJSON.php?selects='+selects+'&geography='+geography)
-	    .defer(d3.json, 'php/getACSJSONmetadata.php?selects='+selects)
 
 	    .await(init);
 
 	    //init will receive all the defers as parameters ie: init(error, counties, senate, house, so on so forth)
 		//pass all defers into init
-		function init(error, senate, house, congress, counties, acs, metadata){
+		function init(error, senate, house, congress, counties, acs){
 		    createMaps(senate, house, congress, counties);
-		    setupMeasures(acs, metadata);
+		    setupMeasures(acs);
 
 		    // helper.geography()
 		    // setupDemographics(acs);
