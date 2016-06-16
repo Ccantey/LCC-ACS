@@ -53,15 +53,15 @@
 		        	<option value="dp04">Housing</option>
 		        </select>
 		    </li>
-            <li>
+<!--             <li>
                 <div class="graphicsHeader">Select a metric:</div>
 		        <select id="metric-select">
-		  <!--       	<option>Demographic</option>
+		        	<option>Demographic</option>
 		        	<option>Social</option>
 		        	<option>Economic</option>
-		        	<option>Housing</option> -->
+		        	<option>Housing</option>
 		        </select>
-		    </li>
+		    </li> -->
 		    <li>
 		        <div class="graphicsHeader">Search by:</div>
 				    <input type="text" class="form-control" id="geoSearch" placeholder="zipcode or county">				
@@ -69,6 +69,9 @@
 		    </li>
 
 		</ul>
+		<div id="metricsDiv">
+		    <div class="graphicsHeader">Select a metric:</div><select id="metric-select"></select>
+		</div>
     </div>
 
 	<div class="panel">

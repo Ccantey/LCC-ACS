@@ -10,13 +10,13 @@
 }
 .graphicsHeader{
   font-size: 15px;
-  text-align: center;
+  display: inline;
   margin:5px;
   font-weight:bold;
 }
 .graphicsSubHeader{
   font-size: 12px;
-  text-align: center;
+  /*text-align: center;*/
   margin:5px;
 }
 .graphicsDataPoint{
@@ -42,22 +42,28 @@
 .active {
   fill: orange;
 }
-.inline{
+#metricsDiv{
+  text-align: center;
+  /*width:100%;*/
+/*  display:inline;*/
+
+}
+#selects{
   /*margin-bottom: 15px;*/
   background-color: #e6e6e6;
-  padding-bottom: 75px !important;
-  padding-left:10px;
+  padding-bottom: 15px !important;
+  /*padding-left:10px;*/
   margin-left: 0 !important;
-  text-align: center;
-/*
-  list-style: none;
-  overflow: hidden;*/
+}
+#selects .inline{
+  width:100%;
 }
 .inline li{
   list-style:none;
   float:left;
   position:relative;
-  width:25%;
+  padding:10px;
+  width:30%;
 }
 
 .loadingDiv{
