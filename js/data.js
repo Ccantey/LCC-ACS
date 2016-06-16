@@ -11,11 +11,17 @@ function setupMeasures(data){
 	// console.log(data.ACS);
 	measureData = {};
 	// metric-select
-    categories = d3.select( "#metric-select" );
-
-    // for (i in data.ACSdata){
-    // 	console.log(data.ACSdata[i])
-    // }
+    metrics = d3.select( "#metric-select" );
+    var metricsList = Object.keys(data.ACSdata[0].geographicProfile);
+    // List ACS Metrics
+    for (str in metricsList){
+    	if (metricsList[str].includes('description')){
+    	    console.log(data.ACSdata[1].geographicProfile[metricsList[str]]);
+    	    metrics.append( "option" )
+				.text( data.ACSdata[1].geographicProfile[metricsList[str]].replace( /^.*?-/g, "" ) )
+				// .datum( subCategories[j] );
+         }   
+    }
 
     
 
@@ -29,7 +35,7 @@ function setupMeasures(data){
 	for ( var i in measureData ){
 
 		if ( i == "ACS" ) continue;
-		var group = categories.append( "optgroup" )
+		var group = metrics.append( "optgroup" )
 			.attr( "label", i )
 			.datum( measureData[i] );
 		subCategories = {};
@@ -49,7 +55,7 @@ function setupMeasures(data){
 			}
 		}
 		for ( j in subCategories ){
-			group.append( "option" )
+			metric.append( "option" )
 				.text( j.replace( /^.*?-/g, "" ) )
 				.datum( subCategories[j] );
 		}
