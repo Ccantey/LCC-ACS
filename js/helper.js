@@ -8,7 +8,7 @@ $( document ).ready(function() {
         active.classed("active", false);
         reset(geoMap[prevGeogState]);
         prevGeogState = this.value;
-		switch($('#geography-select').val()) {
+		switch(prevGeogState) {
 		    case 'Senate':
 		        senateLayer.style("display","block");
 		        houseLayer.style("display","none");

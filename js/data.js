@@ -23,44 +23,39 @@ function setupMeasures(data){
          }   
     }
 
-    
-
-
-
-
-
 	// categories = d3.select( "#selects" ).append( "select" ).attr( "id", "category-select" );
 
 	var subCategories
-	for ( var i in measureData ){
+	// for ( var i in measureData ){
 
-		if ( i == "ACS" ) continue;
-		var group = metrics.append( "optgroup" )
-			.attr( "label", i )
-			.datum( measureData[i] );
-		subCategories = {};
-		subCategories["All " + i + " Measures" ] = measureData[i];
-		for ( var j in measureData[i] ){
-			if ( measureData[i][j].category != "" ){
-				if ( !subCategories[ i + "-" + measureData[i][j].category ] )
-					subCategories[ i + "-" + measureData[i][j].category ] = [];
-				subCategories[ i + "-" + measureData[i][j].category ].push( measureData[i][j] );
+	// 	if ( i == "ACS" ) continue;
+	// 	var group = metrics.append( "optgroup" )
+	// 		.attr( "label", i )
+	// 		.datum( measureData[i] );
+	// 	subCategories = {};
+	// 	subCategories["All " + i + " Measures" ] = measureData[i];
+	// 	for ( var j in measureData[i] ){
+	// 		if ( measureData[i][j].category != "" ){
+	// 			if ( !subCategories[ i + "-" + measureData[i][j].category ] )
+	// 				subCategories[ i + "-" + measureData[i][j].category ] = [];
+	// 			subCategories[ i + "-" + measureData[i][j].category ].push( measureData[i][j] );
 
-				// presence of state_rate means this category gets that extra little chart
-				if ( measureData[i][j].state_rate ){
-					if ( !stateGroups[ i + "-" + measureData[i][j].category ] )
-						stateGroups[ i + "-" + measureData[i][j].category ] = [];
-					stateGroups[ i + "-" + measureData[i][j].category ].push( parseInt(measureData[i][j].measure_id) );
-				}
-			}
-		}
-		for ( j in subCategories ){
-			metric.append( "option" )
-				.text( j.replace( /^.*?-/g, "" ) )
-				.datum( subCategories[j] );
-		}
-	}	
-	// categories.on( "change", function(){ 
+	// 			// presence of state_rate means this category gets that extra little chart
+	// 			if ( measureData[i][j].state_rate ){
+	// 				if ( !stateGroups[ i + "-" + measureData[i][j].category ] )
+	// 					stateGroups[ i + "-" + measureData[i][j].category ] = [];
+	// 				stateGroups[ i + "-" + measureData[i][j].category ].push( parseInt(measureData[i][j].measure_id) );
+	// 			}
+	// 		}
+	// 	}
+	// 	for ( j in subCategories ){
+	// 		metric.append( "option" )
+	// 			.text( j.replace( /^.*?-/g, "" ) )
+	// 			.datum( subCategories[j] );
+	// 	}
+	// }	
+
+	// metrics.on( "change", function(){ 
 	// 	var sel = this;
 	// 	var grp = this.options[ this.selectedIndex ].parentNode.label;
 	// 	selectCategory(

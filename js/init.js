@@ -10,8 +10,9 @@ $( document ).ready(function() {
 	    .defer(d3.json, 'php/getCongressAsGeoJSON.php')
 	    .defer(d3.json, 'php/getCountiesAsGeoJSON.php')
 	    // .defer(d3.json, 'php/demographics.php')
-	    // .defer(d3.json, 'php/demographics.php')
+	    
 	    .defer(d3.json, 'php/getACSJSON.php?selects='+selects+'&geography='+geography)
+	    // .defer(d3.json, 'php/demographics.php')
 
 	    .await(init);
 
@@ -22,7 +23,7 @@ $( document ).ready(function() {
 		    setupMeasures(acs);
 
 		    // helper.geography()
-		    // setupDemographics(acs);
+		    // setupDemographics(demographics);
 		    $('#main').show();
 			$('.loadingDiv').hide();  
 		    // });

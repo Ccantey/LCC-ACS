@@ -186,9 +186,9 @@ function createMaps(senate, house, congress, counties){
 
     geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
     //initial state of maps
-    // $('#geography-select').val('Senate');
-    senateLayer.style("display","block");
-    houseLayer.style("display","none");
+    $('#geography-select').val('House');
+    senateLayer.style("display","none");
+    houseLayer.style("display","block");
     insetCountyLayer.style("display","none");
     countyLayer.style("display","none");
     congressionalLayer.style("display","none");
@@ -200,6 +200,7 @@ function createMaps(senate, house, congress, counties){
 // }
 
 function selectEntity(d) {
+
   var geoSelect = $('#geography-select').val();
   // var geoMap = {'Senate': senateLayer, 'House':houseLayer, 'Congress': congressionalLayer,'County':countyLayer};
 

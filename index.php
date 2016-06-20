@@ -9,6 +9,7 @@
 	<script src="js/helper.js"></script>
 	<script src="js/map.js"></script>
 	<script src="js/data.js"></script>
+	<script src="js/census.js"></script>
 	<script src="js/init.js"></script>
 
 	<!-- load the header -->
